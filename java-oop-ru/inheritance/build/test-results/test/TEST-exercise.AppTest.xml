@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="exercise.AppTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-10-31T17:48:52" hostname="ASUS-Vivobook" time="0.039">
+  <properties/>
+  <testcase name="testSingleTag()" classname="exercise.AppTest" time="0.034"/>
+  <testcase name="testPairedTag()" classname="exercise.AppTest" time="0.001"/>
+  <testcase name="testPairedTagWithChildren()" classname="exercise.AppTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
