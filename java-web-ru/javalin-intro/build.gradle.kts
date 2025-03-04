@@ -4,7 +4,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
     id("com.github.ben-manes.versions") version "0.48.0"
-    id("application")
+    application
 }
 
 application {
@@ -23,10 +23,10 @@ dependencies {
     implementation("io.javalin:javalin:6.3.0")
     implementation("io.javalin:javalin-rendering:6.3.0")
     // END
-    implementation("org.slf4j:slf4j-simple:2.0.16")
+    implementation("org.slf4j:slf4j-simple:2.0.7")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    compileOnly("com.konghq:unirest-java-core:4.4.5")
+    testImplementation("com.konghq:unirest-java:3.13.0")
     testImplementation("org.assertj:assertj-core:3.24.2")
 }
 
