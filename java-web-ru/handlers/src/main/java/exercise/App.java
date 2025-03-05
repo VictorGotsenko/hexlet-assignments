@@ -10,11 +10,10 @@ public final class App {
         Javalin app = Javalin.create(config -> {
             config.bundledPlugins.enableDevLogging();
         });
-        app.get("GET /phones", ctx -> ctx.json(Data.getPhones()));
-        app.get("GET /domains", ctx -> ctx.json(Data.getDomains()));
-
+        app.get("/phones", ctx -> ctx.json(Data.getPhones()));
+        app.get("/domains", ctx -> ctx.json(Data.getDomains()));
         return app;
-                // END
+        // END
     }
 
     public static void main(String[] args) {
