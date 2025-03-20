@@ -26,14 +26,14 @@ public final class App {
         // BEGIN
         app.get("/users", ctx -> {
             var term = ctx.queryParam("term");
-            List<User> foundUsers = new ArrayList<>();
+            List<User> foundUsers;
+            //  найти все совпадения по началу имени пользователя без учета регистра
             if (term != null) {
-                for (User user : USERS) {
-//                    найти все совпадения по началу имени пользователя без учета регистра
-                    if (StringUtils.containsAnyIgnoreCase(user.getFirstName(), term)) {
-                        foundUsers.add(user);
-                    }
-                }
+                foundUsers = USERS.stream().filter(
+                                fUser -> StringUtils.containsIgnoreCase(fUser.getFirstName(), term))
+                        .toList();
+            } else {
+                foundUsers = USERS;
             }
 
             UsersPage page = new UsersPage(foundUsers, term);
