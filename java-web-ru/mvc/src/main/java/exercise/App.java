@@ -25,7 +25,7 @@ public final class App {
 
         // BEGIN
         app.get(NamedRoutes.editPostPath("{id}"), PostsController::edit);
-        app.post((NamedRoutes.editValidate("{id}")), PostsController::editValidate);
+        app.post(NamedRoutes.editPostPath("{id}"), PostsController::editValidate);
         // END
 
         return app;
