@@ -17,7 +17,7 @@
     @endif
 
     <div class="mx-auto p-4 py-md-5">
-        <form action="${NamedRoutes.editPostPath(page.getId())}" method="post">
+        <form action="${NamedRoutes.postPath(page.getId())}" method="post">
             <div class="mb-3">
                 <label class="form-label">
                     Название

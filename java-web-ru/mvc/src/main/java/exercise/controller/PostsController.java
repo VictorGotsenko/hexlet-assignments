@@ -67,7 +67,7 @@ public class PostsController {
         ctx.render("posts/edit.jte", model("page", page));
     }
 
-    public static void editValidate(Context ctx) {
+    public static void update(Context ctx) {
         try {
             Long id = ctx.pathParamAsClass("id", Long.class).get();
             var name = ctx.formParamAsClass("name", String.class)
