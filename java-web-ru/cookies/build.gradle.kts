@@ -5,7 +5,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 plugins {
     id("com.github.ben-manes.versions") version "0.48.0"
     application
-    
+    checkstyle
     id("io.freefair.lombok") version "8.6"
 }
 
@@ -34,7 +34,16 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest-core:2.2")
     testImplementation("org.assertj:assertj-core:3.24.2")
     implementation("org.apache.commons:commons-lang3:3.13.0")
+
+    //
+    implementation("com.puppycrawl.tools:checkstyle:10.23.1")
 }
+
+checkstyle {
+    toolVersion = "10.23.1"
+    configFile = file("/home/s7/Hexlet/checkstyle/checkstyle.xml")
+}
+
 
 tasks.test {
     useJUnitPlatform()

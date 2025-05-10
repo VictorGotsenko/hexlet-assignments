@@ -1,6 +1,5 @@
 package exercise.controller;
 
-import org.apache.commons.lang3.StringUtils;
 import exercise.util.Security;
 import exercise.model.User;
 import exercise.util.NamedRoutes;
@@ -29,7 +28,7 @@ public class UsersController {
         User user = new User(firstName, lastName, email, encriptedPassword, token);
         UserRepository.save(user);
         ctx.cookie("usertoken", token);
-        ctx.redirect("/users/" + user.getId());
+        ctx.redirect(NamedRoutes.userPath(user.getId()));
     }
 
     public static void show(Context ctx) {
@@ -39,7 +38,7 @@ public class UsersController {
                 .orElseThrow(() -> new NotFoundResponse("User not found"));
         if (!usertoken.equals(user.getToken())) {
             ctx.render("users/build.jte");
-        }else{
+        } else {
             UserPage page = new UserPage(user);
             ctx.render("users/show.jte", model("page", page));
         }
