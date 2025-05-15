@@ -49,7 +49,8 @@ Post was successfully created!, а также выполняется редир�
             var page = new BuildPostPage(name, body, e.getErrors());
             ctx.sessionAttribute("flash", "Post not created!");
             page.setFlash(ctx.consumeSessionAttribute("flash"));
-            ctx.render("posts/build.jte", model("page", page)).status(422);
+//            ctx.render("posts/build.jte", model("page", page)).status(422);
+            ctx.render("posts/build.jte", model("page", page));
         }
 
 
