@@ -20,26 +20,15 @@ public class PostsController {
 
     // BEGIN
     public static void create(Context ctx) {
-/*Реализуйте в контроллере метод create(), который будет создавать новый пост.
-
-Добавьте валидацию на название поста, оно должно быть не короче двух символов.
-При успешном создании поста в сессию записывается сообщение об успешном создании поста
-Post was successfully created!, а также выполняется редирект на страницу постов.
-
-  */
         try {
             var name = ctx.formParamAsClass("name", String.class)
                 .check(value -> value.length() >= 2, "Название не должно быть короче двух символов")
                 .get();
 
-            var body = ctx.formParamAsClass("body", String.class)
-                .check(value -> value.length() >= 10, "Пост должен быть не короче 10 символов")
-                .get();
-
+            var body = ctx.formParamAsClass("body", String.class).get();
             var post = new Post(name, body);
             PostRepository.save(post);
-            // Добавляем сообщение в сессию
-            // Ключ может иметь любое название, здесь мы выбрали flash
+            // Добавлю сообщение в сессию. Ключ может иметь любое название, здесь выбрал flash
             ctx.sessionAttribute("flash", "Post was successfully created!");
             ctx.redirect(NamedRoutes.postsPath());
 
@@ -49,17 +38,11 @@ Post was successfully created!, а также выполняется редир�
             var page = new BuildPostPage(name, body, e.getErrors());
             ctx.sessionAttribute("flash", "Post not created!");
             page.setFlash(ctx.consumeSessionAttribute("flash"));
-//            ctx.render("posts/build.jte", model("page", page)).status(422);
             ctx.render("posts/build.jte", model("page", page));
         }
-
-
     }
 
     public static void index(Context ctx) {
-//Реализуйте в контроллере метод index(), который отвечает за вывод списка постов.
-// Реализуйте вывод флеш-сообщения.
-
         var numPage = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
         var posts = PostRepository.getEntities();
         var postPage = new PostsPage(posts, numPage);
